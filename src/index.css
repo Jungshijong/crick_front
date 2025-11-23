@@ -1,0 +1,30 @@
+.cloud {
+  position: absolute;
+  left: -300px;
+  animation-name: cloudMove;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.cloud.slow {
+  animation-duration: 60s;
+}
+
+.cloud.medium {
+  animation-duration: 40s;
+}
+
+.cloud.fast {
+  animation-duration: 25s;
+}
+
+@keyframes cloudMove {
+  from {
+    left: -300px;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+
