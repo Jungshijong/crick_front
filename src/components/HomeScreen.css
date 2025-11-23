@@ -1,0 +1,138 @@
+.home-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Futuristic glowing black background */
+.glow-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #080808 0%, #000 70%);
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Subtle red-blue glow */
+.glow-background::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 0, 50, 0.25), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(0, 120, 255, 0.2), transparent 70%);
+  animation: bgGlowMove 10s ease-in-out infinite alternate;
+}
+
+@keyframes bgGlowMove {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+  100% { transform: scale(1.2) translate(-5%, -5%); opacity: 1; }
+}
+
+/* Girl Character - breathing animation */
+.girl-left {
+  position: absolute;
+  bottom: -6%;
+  left: 0;
+  height: 110vh;
+  z-index: 2;
+  object-fit: contain;
+  animation: girlBreathe 5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes girlBreathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.02) scaleX(1.01); }
+}
+
+/* Buttons Container */
+.buttons-home {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  z-index: 3;
+}
+
+/* Button Base */
+.btn-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 22px 60px;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 420px;
+  letter-spacing: 2px;
+  color: #fff;
+  position: relative;
+  transition: all 0.25s ease;
+  background: linear-gradient(45deg, #440000, #7a0b0b, #b11212);
+  box-shadow: 0 0 20px rgba(200, 0, 0, 0.4);
+  animation: buttonGlow 3s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 80, 80, 0.8), 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+/* Always glowing buttons */
+@keyframes buttonGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 0, 0, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(255, 50, 50, 0.7); }
+}
+
+/* Hover enlarges */
+.btn-home:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(255, 60, 60, 0.8);
+}
+
+/* Click pop */
+.btn-home:active {
+  transform: scale(1.15);
+  transition: transform 0.1s ease;
+}
+
+/* Animated glowing border */
+.glow-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ff0000, #ff6600, #b30000);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(6px);
+  animation: borderFlow 6s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .girl-left {
+    height: 95vh;
+    opacity: 0.9;
+  }
+  .buttons-home {
+    right: 5%;
+  }
+  .btn-home {
+    width: 300px;
+    font-size: 22px;
+    padding: 16px 40px;
+  }
+}
